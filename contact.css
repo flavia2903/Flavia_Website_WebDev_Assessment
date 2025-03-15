@@ -1,17 +1,20 @@
 body {
     margin: 0;
-    min-width: 100vw;
     min-height: 100vh;
     background-color: #9eb5b6;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     font-family: sans-serif;
+    display: grid;
+    grid-template-columns: 1fr minmax(300px, 800px) 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas:
+        ". header ."
+        ". nav ."
+        ". main ."
+        ". footer .";
 }
 
 header {
-    width: 100%;
+    grid-area: header;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,15 +32,14 @@ h1 {
 }
 
 nav {
-    width: 100%;
+    grid-area: nav;
     display: flex;
     justify-content: center;
 }
 
 ul {
-    list-style-type: none;
+    list-style: none;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 0;
@@ -55,7 +57,7 @@ li {
     color: #ecf1f5;
     border-radius: 8px;
     text-align: center;
-    transition: background-color 0.5s, color 0.5s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 li:hover {
@@ -66,24 +68,22 @@ li:hover {
 a {
     text-decoration: none;
     color: inherit;
-    font-family: inherit;
 }
 
 main {
-    width: 100%;
-    max-width: 800px;
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 40px;
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 20px;  /* Correct margin syntax */
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
 }
 
 footer {
-    margin-top: auto;
+    grid-area: footer;
     text-align: center;
     font-weight: bold;
     font-style: italic;
@@ -95,57 +95,25 @@ form {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 100%;
 }
 
-form .name {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    text-align: flex;
-    font-weight: bold;
-    font-style: italic;
-}
-
-form .email {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    text-align: flex;
-    font-weight: bold;
-    font-style: italic;
-}
- 
-
-form .subject {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    text-align: flex;
-    font-weight: bold;
-    font-style: italic;
-}
-
-
+form .name,
+form .email,
+form .subject,
 form .message {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    text-align: flex;
     font-weight: bold;
     font-style: italic;
 }
 
 label {
     font-weight: bold;
-    margin-bottom: 5px;
 }
 
-input {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-} 
+input,
 textarea {
     padding: 10px;
     font-size: 16px;
